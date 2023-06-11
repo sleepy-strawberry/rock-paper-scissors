@@ -1,0 +1,12 @@
+body {
+  background-color: pink;
+  font-family: "Dancing Script", cursive;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-style: italic;
+}
+span {
+  font-style: normal;
+}
