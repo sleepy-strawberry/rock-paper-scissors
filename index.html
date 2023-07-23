@@ -11,9 +11,36 @@
       href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Signika+Negative&display=swap"
       rel="stylesheet"
     />
-    <script src="index.js"></script>
   </head>
   <body>
-    <h1>Website is not ready yet, work in progress... <span>👩‍💻</span></h1>
+    <div id="help">Help</div>
+    <div id="popup">
+      <img src="assets/hellokitty.png" alt="hello kitty smiling" />
+      <h3>How to play:</h3>
+      <p>
+        The game consists of 5 rounds. Each time you or the computer scores a
+        point. If there is a tie, no one gets a point. In the world of magical
+        cats, there are still certain rules: the wizard defeats the assassin,
+        the fairy defeats the wizard, and the assassin defeats the fairy. Two
+        cats of the same class cannot defeat each other. It is very easy. Have a
+        nice game! ♡
+      </p>
+      <button type="button" id="closePopup">OK</button>
+    </div>
+    <div class="titles">
+      <h1>Can you beat the computer...? 👩‍💻</h1>
+      <h2 id="comment">Choose your hero!</h2>
+    </div>
+    <section class="images-section">
+      <img id="wizard" src="assets/wizard.jpg" alt="wizard" />
+      <img id="fairy" src="assets/fairy.jpg" alt="fairy" />
+      <img id="assassin" src="assets/assassin.png" alt="assassin" />
+    </section>
+    <main>
+      <p id="player-score">0</p>
+      <p id="computer-score">0</p>
+    </main>
+    <p id="board">You vs Computer</p>
+    <script src="index.js"></script>
   </body>
 </html>
