@@ -2,15 +2,17 @@ body {
   margin: 0;
   background-color: pink;
   font-family: "Dancing Script", cursive;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 15vh 10vh 45vh 15vh 15vh;
+  grid-template-areas:
+    "h1"
+    "h2"
+    "section"
+    "score"
+    "comment";
   height: 100vh;
   font-style: italic;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   color: #010b3d;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -97,10 +99,15 @@ img:active {
   cursor: pointer;
 }
 section {
-  width: 100vw;
-  display: flex;
-  justify-content: space-around;
+  grid-area: section;
+  display: grid;
+  grid-template-rows: 1;
+  grid-template-columns: repeat(3, auto);
+  justify-content: center;
   align-items: center;
+  gap: 10vw;
+  overflow: hidden;
+  max-width: 1500px;
 }
 div.titles {
   display: flex;
@@ -108,7 +115,9 @@ div.titles {
   align-items: center;
   flex-direction: column;
   gap: 50px;
-  margin-bottom: 60px;
+}
+div.napis1 {
+  grid-area: h1;
 }
 h1 {
   font-size: 45px;
@@ -116,12 +125,14 @@ h1 {
   font-style: normal;
 }
 h2 {
+  grid-area: h2;
   font-size: 30px;
   font-style: normal;
+  margin: 0;
 }
 
 main {
-  height: 30vh;
+  grid-area: score;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -134,12 +145,10 @@ main p {
   padding: 5px 20px;
 }
 #board {
+  grid-area: comment;
   font-size: 35px;
-  margin-top: -20px;
-}
-#comment {
-  font-size: 25px;
-  margin: 0;
+  margin: 0 auto;
+  padding-top: 5vh;
 }
 
 div.texts-below {
@@ -149,37 +158,38 @@ div.texts-below {
 }
 
 @media only screen and (max-width: 768px) {
-  /* For mobile phones: */
-  section {
-    display: grid;
-    grid-template-columns: 200px;
-    grid-template-rows: 1fr 1fr 1fr;
-    height: 150vh;
-    justify-content: space-around;
-    align-items: center;
-  }
-  img {
-    width: 200px;
-  }
-  body {
-    height: 170vh;
+  h1 {
+    font-size: 30px;
   }
   h2 {
-    padding-bottom: 15px;
-    font-size: 40px;
+    font-size: 20px;
+    height: 5vh;
   }
-  h1 {
-    font-size: 32px;
-    text-align: center;
+  img {
+    max-width: 110px;
+  }
+  section {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
   }
   #help {
-    top: 100px;
-    left: 10px;
-    height: 50px;
-    width: 50px;
+    width: 45px;
+    height: 45px;
+    top: 25vh;
   }
-  #popup p {
-    font-size: 17px;
-    font-family: arial;
+  body {
+    overflow: hidden;
+    grid-template-rows: 5vh 5vh 60vh 15vh 15vh;
+  }
+  main {
+    height: 5vh;
+    font-size: 15px;
+  }
+  #board {
+    height: 5vh;
+    font-size: 18px;
+    margin-top: -20px;
+    padding: 0;
   }
 }

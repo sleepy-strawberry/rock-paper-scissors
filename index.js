@@ -36,35 +36,39 @@ let popupWindow = document.getElementById("popup");
 let playerScoreText = document.getElementById("player-score");
 let computerScoreText = document.getElementById("computer-score");
 
+let starsAnimation = document.getElementsByClassName("stars");
+
 function getComputerChoice() {
   return possibilities[Math.floor(possibilities.length * Math.random())];
 }
 // a function that plays a single round of Rock Paper Scissors
 function playRound(playerSelection, computerSelection) {
   cleaningCommentStyles();
+  cleaningComment();
   roundCounter++;
   computerSelection = getComputerChoice();
 
   if (playerSelection === computerSelection) {
-    cleaningComment();
     comment.innerText = `No one won, ${playerSelection} and ${computerSelection}! 🫥`;
+    playerScore++;
+    computerScore++;
+    playerScoreText.innerText = playerScore;
+    computerScoreText.innerText = computerScore;
   } else if (
     (playerSelection === "wizard" && computerSelection === "assassin") ||
     (playerSelection === "fairy" && computerSelection === "wizard") ||
     (playerSelection === "assassin" && computerSelection === "fairy")
   ) {
-    cleaningComment();
     comment.innerText = `You won, ${playerSelection} beats ${computerSelection}! 😃`;
     playerScore++;
     playerScoreText.innerText = playerScore;
   } else {
-    cleaningComment();
     comment.innerText = `You lose, ${computerSelection} beats ${playerSelection} 😣`;
     computerScore++;
     computerScoreText.innerText = computerScore;
   }
 
-  if (roundCounter === 5) {
+  if (playerScore === 5 || computerScore === 5) {
     endGame();
     comment.style.color = "red";
     comment.style.borderBottom = "2px solid red";
@@ -74,8 +78,12 @@ function playRound(playerSelection, computerSelection) {
 function endGame() {
   if (playerScore > computerScore) {
     comment.innerText = "You won!";
+    let audio = new Audio("assets/bravo.mp3");
+    audio.play();
   } else if (computerScore > playerScore) {
     comment.innerText = "You lose";
+    let audio = new Audio("assets/crying.mp3");
+    audio.play();
   } else {
     comment.innerText = "No one won";
   }
@@ -95,7 +103,6 @@ function cleaningCommentStyles() {
 function helpInstruction() {
   popupWindow.style.visibility = "visible";
 }
-// uniemozliwic zazanczanie tekstu
 function closePopupWindow() {
   popupWindow.style.visibility = "hidden";
 }
